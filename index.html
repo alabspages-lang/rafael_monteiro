@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rafael Monteiro | Harmonização facial</title>
+<meta name="description" content="Harmonização facial com planejamento individualizado para valorizar seus traços, respeitar sua identidade e buscar resultados naturalmente sofisticados.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&family=Sora:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#070A11; --graphite:#0E131D; --mist:#E7EBF2; --text:#EAEEF5; --steel:#98A4B8;
+  --ice:#B4C4FF; --lilac:#D7C6FF;
+  --display:"Sora",system-ui,sans-serif; --sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --pad:clamp(1.25rem,5vw,4.5rem); --max:1240px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font:400 clamp(1rem,.95rem + .22vw,1.1rem)/1.65 var(--sans);color:var(--text);background:var(--ink);overflow-x:hidden}
+img{display:block;max-width:100%}
+h1,h2,h3,p,ul,ol,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+h1,h2,h3{font-family:var(--display);font-weight:300;line-height:1.08;letter-spacing:-.035em;text-wrap:balance}
+h2{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.5rem);max-width:19ch}
+h3{font-weight:400;letter-spacing:-.02em}
+p{text-wrap:pretty}
+:focus-visible{outline:2px solid var(--ice);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+section{position:relative;padding-block:clamp(4.5rem,10vw,8.5rem);isolation:isolate}
+.light{background:var(--mist);color:#0B1220}
+.lead{max-width:48ch;color:var(--steel);font-size:clamp(1.05rem,1rem + .35vw,1.25rem)}
+.light .lead{color:#44526B}
+.bg{position:absolute;inset:0;z-index:-2;background:var(--graphite)}
+.bg img{width:100%;height:100%;object-fit:cover}
+.bg::after{content:"";position:absolute;inset:0;background:rgba(7,10,17,.62)}
+
+/* vidro */
+.glass{background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.17);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 24px 60px -20px rgba(0,0,0,.6);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);border-radius:1.5rem}
+@supports not (backdrop-filter:blur(1px)){.glass{background:rgba(18,24,36,.92)}}
+
+/* botão */
+.cta{display:inline-flex;align-items:center;min-height:3.25rem;padding:.85rem 1.8rem;border-radius:999px;background:linear-gradient(120deg,var(--ice),var(--lilac));color:#0B1220;font-weight:500;text-decoration:none;box-shadow:0 10px 30px -10px rgba(180,196,255,.6);transition:transform .25s,box-shadow .25s,filter .25s}
+.cta:hover{filter:brightness(1.08);box-shadow:0 14px 40px -10px rgba(180,196,255,.85)}
+.cta:active{transform:scale(.98)}
+
+/* topo */
+.bar{position:fixed;top:.75rem;left:50%;translate:-50% 0;z-index:30;width:min(calc(100% - 1.5rem),var(--max));display:flex;justify-content:space-between;align-items:center;padding:.5rem .6rem .5rem 1.3rem;border-radius:999px}
+.name{font:400 1rem/1 var(--display);letter-spacing:-.02em;color:var(--text);text-decoration:none}
+.name small{display:block;margin-top:.3rem;font:400 .72rem/1 var(--sans);letter-spacing:.02em;color:var(--steel)}
+.bar .cta{min-height:2.6rem;padding:.5rem 1.25rem;font-size:.92rem}
+@media(max-width:520px){.bar .cta{padding-inline:1rem;font-size:.85rem}}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:flex-end;padding:0;background:var(--ink)}
+.hero .bg::after{background:linear-gradient(90deg,rgba(7,10,17,.92) 0%,rgba(7,10,17,.55) 48%,rgba(7,10,17,.1) 100%),linear-gradient(0deg,rgba(7,10,17,.85),transparent 45%)}
+.hero .bg img{object-position:70% 30%}
+.scan{position:absolute;z-index:-1;right:6%;top:50%;translate:0 -50%;width:min(46vw,36rem);aspect-ratio:1;pointer-events:none;opacity:.9}
+.scan *{fill:none;stroke:var(--ice);stroke-width:1;vector-effect:non-scaling-stroke}
+.scan .ln{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s .3s cubic-bezier(.6,0,.2,1) forwards}
+.scan .dt{fill:var(--ice);stroke:none;opacity:0;animation:pop .6s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+.hero .wrap{width:100%;display:grid;gap:2rem;padding-block:7rem clamp(2.5rem,7vh,4.5rem)}
+.hero h1{font-size:clamp(2.6rem,1.2rem + 6vw,6rem);max-width:12ch;line-height:1;letter-spacing:-.045em}
+.hero .sub{margin-top:1.5rem;max-width:46ch;color:#C7D0E0;font-size:clamp(1.05rem,1rem + .3vw,1.2rem)}
+.hero .cta{margin-top:2rem}
+.by{max-width:21rem;padding:1.1rem 1.3rem;font-size:.95rem;color:#D5DCEA}
+@media(min-width:900px){.hero .wrap{grid-template-columns:1fr auto;align-items:end}}
+@media(max-width:899px){.scan{opacity:.35;right:-12%;width:80vw}}
+.rise{opacity:0;transform:translateY(20px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.rise.d1{animation-delay:.15s}.rise.d2{animation-delay:.3s}.rise.d3{animation-delay:.5s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* apresentação */
+.intro .grid{display:grid;gap:2.5rem}
+.intro h2{max-width:14ch}
+.intro .txt{display:grid;gap:1.4rem;max-width:52ch;font-size:clamp(1.1rem,1rem + .5vw,1.35rem);color:#26324A}
+.intro .txt p:first-child{font-family:var(--display);font-weight:300;font-size:clamp(1.3rem,1.05rem + 1.2vw,2rem);line-height:1.25;letter-spacing:-.025em;color:#0B1220}
+@media(min-width:900px){.intro .grid{grid-template-columns:1fr 1fr;gap:6rem;align-items:start}}
+
+/* abordagem */
+.two{display:grid;gap:3rem}
+@media(min-width:900px){.two{grid-template-columns:1fr 1fr;gap:5rem;align-items:center}}
+.pill-list{display:grid;gap:.75rem;margin-top:2.25rem}
+.pill-list li{padding:1rem 1.4rem;border-radius:999px;font-size:1.02rem;display:flex;align-items:center;gap:.9rem}
+.pill-list li::before{content:"";flex:none;width:.55rem;height:.55rem;border-radius:50%;background:var(--ice);box-shadow:0 0 14px var(--ice)}
+.frame{position:relative;border-radius:2rem;overflow:hidden;aspect-ratio:4/5;background:var(--graphite);border:1px solid rgba(255,255,255,.14)}
+.frame img{width:100%;height:100%;object-fit:cover}
+
+/* procedimentos */
+.proc .split{display:grid;gap:2.5rem}
+@media(min-width:900px){.proc .split{grid-template-columns:5fr 7fr;gap:4rem}.proc .sticky{position:sticky;top:6rem;align-self:start}}
+.proc ul{padding:.5rem 1.5rem}
+.proc li{padding-block:1.5rem;border-top:1px solid rgba(255,255,255,.14)}
+.proc li:first-child{border-top:0}
+.proc h3{font-size:clamp(1.2rem,1.05rem + .6vw,1.5rem);margin-bottom:.4rem}
+.proc li p{color:#C0C9D9;max-width:48ch}
+.note{margin-top:1.5rem;font-size:.92rem;color:var(--steel);max-width:52ch}
+
+/* resultados */
+.ba-grid{margin-top:clamp(2.5rem,6vw,4rem);display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))}
+.ba{--p:50%;position:relative;aspect-ratio:4/5;border-radius:1.5rem;overflow:hidden;border:1px solid rgba(255,255,255,.17);background:var(--graphite);touch-action:pan-y}
+.ba .pane{position:absolute;inset:0;display:grid;place-items:center;font:300 1.1rem var(--display);color:var(--steel);background:linear-gradient(160deg,#18202e,#0b0f18)}
+.ba .before{clip-path:inset(0 calc(100% - var(--p)) 0 0);background:linear-gradient(160deg,#222b3d,#111826)}
+.ba .pane img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .tag{position:absolute;bottom:1rem;padding:.3rem .8rem;border-radius:999px;font-size:.8rem;background:rgba(7,10,17,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18)}
+.ba .before .tag{left:1rem}.ba .after .tag{right:1rem}
+.ba .knob{position:absolute;top:0;bottom:0;left:var(--p);width:1px;background:var(--ice);pointer-events:none}
+.ba .knob::after{content:"";position:absolute;top:50%;left:50%;width:2.5rem;height:2.5rem;translate:-50% -50%;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.ba:focus-within{outline:2px solid var(--ice);outline-offset:3px}
+.ba-note{margin-top:1.25rem;font-size:.9rem;color:var(--steel)}
+
+/* sobre */
+.about .profile{padding:1rem;max-width:26rem}
+.about .photo{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:1.1rem;background:#D5DBE7}
+.about .photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.about .profile .name{color:#0B1220;display:block;padding:1rem .5rem .3rem}
+.about .profile .name small{color:#44526B}
+.about .glass{background:rgba(255,255,255,.55);border-color:rgba(11,18,32,.1);box-shadow:0 24px 60px -30px rgba(11,18,32,.3),inset 0 1px 0 #fff}
+.about .txt{display:grid;gap:1.25rem;max-width:50ch;margin-top:1.75rem;color:#26324A}
+.about .cred{padding:1rem 1.25rem;border:1px dashed rgba(11,18,32,.3);border-radius:1rem;font-size:.95rem;color:#44526B}
+
+/* como funciona */
+.steps{margin-top:clamp(2.5rem,6vw,4rem);display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}
+.steps li{padding:1.5rem}
+.steps .n{display:grid;place-items:center;width:3rem;height:3rem;margin-bottom:1.5rem;border-radius:50%;border:1px solid var(--ice);color:var(--ice);font:400 .9rem var(--display)}
+.steps h3{font-size:1.3rem;margin-bottom:.5rem}
+.steps p{color:#C0C9D9;font-size:.98rem}
+
+/* depoimentos */
+.quotes{margin-top:clamp(2.5rem,6vw,4rem);display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr))}
+.quotes figure{padding:clamp(1.5rem,3vw,2.25rem);display:flex;flex-direction:column;justify-content:space-between;gap:2rem;background:rgba(255,255,255,.6);border-color:rgba(11,18,32,.1);box-shadow:0 24px 60px -30px rgba(11,18,32,.3),inset 0 1px 0 #fff}
+.quotes blockquote{margin:0;font:300 clamp(1.15rem,1.05rem + .5vw,1.4rem)/1.4 var(--display);letter-spacing:-.02em;color:#0B1220;text-wrap:pretty}
+.quotes figcaption{font-size:.95rem;color:#44526B}
+.quotes figcaption b{display:block;font-weight:500;color:#0B1220}
+
+/* faq */
+details{border-top:1px solid rgba(255,255,255,.14)}
+details:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+summary{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;min-height:4.25rem;padding-block:1.1rem;cursor:pointer;list-style:none;font:400 clamp(1.05rem,1rem + .45vw,1.3rem)/1.3 var(--display);letter-spacing:-.02em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:1rem;height:1rem;background:linear-gradient(var(--ice),var(--ice)) center/100% 1.5px no-repeat,linear-gradient(var(--ice),var(--ice)) center/1.5px 100% no-repeat;transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 3rem 1.5rem 0;max-width:56ch;color:#C0C9D9;animation:fade .4s}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}}
+
+/* final */
+.final{text-align:center}
+.final .bg img{object-position:center 30%}
+.final .bg::after{background:rgba(7,10,17,.7)}
+.final .glass{max-width:48rem;margin:0 auto;padding:clamp(2.5rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem)}
+.final h2{margin-inline:auto;max-width:15ch}
+.final .lead{margin:1.5rem auto 0;color:#C7D0E0}
+.final .cta{margin-top:2.25rem}
+footer{background:var(--ink);color:var(--steel);font-size:.85rem;padding:1.75rem var(--pad);text-align:center}
+footer a{color:inherit}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rise{animation:none;opacity:1;transform:none}
+  .scan .ln{animation:none;stroke-dashoffset:0}.scan .dt{animation:none;opacity:1}
+  details p{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="bar glass">
+  <a class="name" href="#topo">Rafael Monteiro<small>Harmonização facial</small></a>
+  <a class="cta" href="#" data-cta>Agendar minha avaliação</a>
+</header>
+
+<main>
+<!-- 1. Hero -->
+<section class="hero" id="topo">
+  <div class="bg"><img src="https://unsplash.com/photos/yH0dth2yEQE/download?force=true&w=2000" width="2000" height="1333" alt="" fetchpriority="high" onerror="this.remove()"></div>
+  <svg class="scan" viewBox="0 0 200 200" aria-hidden="true">
+    <ellipse class="ln" cx="100" cy="100" rx="58" ry="78" pathLength="1"/>
+    <ellipse class="ln" cx="100" cy="100" rx="74" ry="94" pathLength="1" style="animation-delay:.6s;opacity:.5"/>
+    <path class="ln" d="M100 6V194M6 100H194" pathLength="1" style="opacity:.35;animation-delay:.9s"/>
+    <path class="ln" d="M52 74H148M64 128H136M100 100L72 150M100 100L128 150" pathLength="1" style="opacity:.6;animation-delay:1.2s"/>
+    <circle class="dt" cx="100" cy="22" r="2.2" style="animation-delay:1.6s"/><circle class="dt" cx="52" cy="74" r="2.2" style="animation-delay:1.8s"/>
+    <circle class="dt" cx="148" cy="74" r="2.2" style="animation-delay:1.9s"/><circle class="dt" cx="100" cy="100" r="2.2" style="animation-delay:2s"/>
+    <circle class="dt" cx="64" cy="128" r="2.2" style="animation-delay:2.1s"/><circle class="dt" cx="136" cy="128" r="2.2" style="animation-delay:2.2s"/>
+    <circle class="dt" cx="100" cy="178" r="2.2" style="animation-delay:2.4s"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <h1 class="rise">Sua beleza, em sua melhor versão.</h1>
+      <p class="sub rise d1">Harmonização facial com planejamento individualizado para valorizar seus traços, respeitar sua identidade e buscar resultados naturalmente sofisticados.</p>
+      <a class="cta rise d2" href="#" data-cta>Agendar minha avaliação</a>
+    </div>
+    <p class="by glass rise d3">Por Rafael Monteiro, profissional especializado em harmonização facial.</p>
+  </div>
+</section>
+
+<!-- 2. Apresentação -->
+<section class="intro light">
+  <div class="wrap grid">
+    <h2>Cada rosto tem sua própria harmonia.</h2>
+    <div class="txt">
+      <p>Acredito que a estética facial não deve transformar quem você é, mas valorizar aquilo que torna sua aparência única.</p>
+      <p>Meu trabalho começa com um olhar atento às proporções, aos contornos e às particularidades de cada rosto, buscando resultados equilibrados, personalizados e coerentes com suas características.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Minha abordagem -->
+<section class="approach">
+  <div class="wrap two">
+    <div>
+      <h2>Naturalidade não é acaso. É planejamento.</h2>
+      <p class="lead" style="margin-top:1.5rem">Cada decisão deve ter um propósito. Por isso, priorizo uma abordagem criteriosa, respeitando os limites individuais e evitando intervenções desnecessárias.</p>
+      <ul class="pill-list">
+        <li class="glass">Análise individual das proporções faciais.</li>
+        <li class="glass">Planejamento personalizado.</li>
+        <li class="glass">Valorização dos traços naturais.</li>
+        <li class="glass">Indicação consciente dos procedimentos.</li>
+        <li class="glass">Atenção à segurança e ao acompanhamento.</li>
+      </ul>
+    </div>
+    <div class="frame"><img src="https://unsplash.com/photos/b2bXKspL5MY/download?force=true&w=1400" width="1400" height="1750" alt="Retrato de uma mulher em close" loading="lazy" onerror="this.remove()"></div>
+  </div>
+</section>
+
+<!-- 4. Procedimentos -->
+<section class="proc">
+  <div class="bg"><img src="https://unsplash.com/photos/JAFwhyXxMOc/download?force=true&w=2000" width="2000" height="1333" alt="" loading="lazy" onerror="this.remove()"></div>
+  <div class="wrap split">
+    <div class="sticky"><h2>Precisão em cada detalhe.</h2></div>
+    <div>
+      <ul class="glass">
+        <li><h3>Preenchimento labial</h3><p>Valorização do formato, contorno e volume dos lábios, respeitando a harmonia facial.</p></li>
+        <li><h3>Preenchimento de mento</h3><p>Planejamento da projeção do queixo e de sua relação com os demais traços.</p></li>
+        <li><h3>Contorno mandibular</h3><p>Abordagem personalizada para trabalhar a definição e as proporções do contorno facial.</p></li>
+        <li><h3>Preenchimento facial</h3><p>Tratamento direcionado às necessidades individuais, conforme avaliação profissional.</p></li>
+        <li><h3>Bioestimuladores de colágeno</h3><p>Procedimentos voltados à estimulação de colágeno, quando indicados.</p></li>
+      </ul>
+      <p class="note">Cada procedimento depende de avaliação individual, indicação clínica e análise dos riscos envolvidos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Resultados -->
+<section class="results">
+  <div class="wrap">
+    <h2>A diferença está nos detalhes.</h2>
+    <p class="lead" style="margin-top:1.5rem">Meu objetivo é buscar resultados que respeitem a identidade de cada paciente, valorizando proporções e características individuais sem recorrer a padrões estéticos universais.</p>
+    <!-- SUBSTITUIR: galeria de resultados reais (antes e depois). Troque cada .pane por <img src="..." alt="..."> e mantenha o input. -->
+    <div class="ba-grid">
+      <figure class="ba"><div class="pane after">Foto depois<span class="tag">Depois</span></div><div class="pane before">Foto antes<span class="tag">Antes</span></div><span class="knob"></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois, caso 1"></figure>
+      <figure class="ba"><div class="pane after">Foto depois<span class="tag">Depois</span></div><div class="pane before">Foto antes<span class="tag">Antes</span></div><span class="knob"></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois, caso 2"></figure>
+      <figure class="ba"><div class="pane after">Foto depois<span class="tag">Depois</span></div><div class="pane before">Foto antes<span class="tag">Antes</span></div><span class="knob"></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois, caso 3"></figure>
+    </div>
+    <p class="ba-note">[Galeria de resultados reais — antes e depois]</p>
+  </div>
+</section>
+
+<!-- 6. Sobre -->
+<section class="about light">
+  <div class="wrap two">
+    <figure class="profile glass">
+      <!-- Foto ilustrativa (banco de imagens) para o portfólio -->
+      <div class="photo"><img src="https://unsplash.com/photos/9aBsCd9Fvgc/download?force=true&w=1200" width="1200" height="1500" alt="Retrato ilustrativo de Rafael Monteiro" loading="lazy" onerror="this.remove()"></div>
+      <a class="name" href="#topo">Rafael Monteiro<small>Harmonização facial</small></a>
+    </figure>
+    <div>
+      <h2>Conhecimento técnico. Olhar estético. Atendimento individual.</h2>
+      <div class="txt">
+        <p>Minha atuação em harmonização facial une conhecimento técnico, planejamento cuidadoso e atenção às particularidades de cada paciente.</p>
+        <p>Acredito que um bom resultado começa muito antes do procedimento: começa na escuta, na avaliação e na escolha consciente de cada intervenção.</p>
+        <!-- SUBSTITUIR: formação, especializações, registro profissional e experiência comprovada -->
+        <p class="cred">Inserir formação, especializações, registro profissional e experiência comprovada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Como funciona -->
+<section class="how">
+  <div class="bg"><img src="https://unsplash.com/photos/yH0dth2yEQE/download?force=true&w=1600" alt="" width="1600" height="1067" loading="lazy" style="object-position:30% 60%;filter:blur(6px)" onerror="this.remove()"></div>
+  <div class="wrap">
+    <h2>Uma experiência pensada para você.</h2>
+    <ol class="steps">
+      <li class="glass"><span class="n">01</span><h3>Avaliação</h3><p>Conversamos sobre suas expectativas e avalio suas características faciais.</p></li>
+      <li class="glass"><span class="n">02</span><h3>Planejamento</h3><p>Definimos as possibilidades de tratamento, considerando indicações, limitações e prioridades.</p></li>
+      <li class="glass"><span class="n">03</span><h3>Procedimento</h3><p>Realizamos as intervenções indicadas com técnica, cuidado e atenção aos protocolos de segurança.</p></li>
+      <li class="glass"><span class="n">04</span><h3>Acompanhamento</h3><p>Você recebe orientações e acompanhamento conforme as necessidades do tratamento.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 8. Depoimentos -->
+<section class="light">
+  <div class="wrap">
+    <h2>A experiência de quem confiou no meu trabalho.</h2>
+    <p class="lead" style="margin-top:1.5rem">Relatos reais de pacientes sobre o atendimento, o planejamento e sua experiência com os procedimentos.</p>
+    <!-- Depoimentos fictícios, apenas para o portfólio. Substituir por relatos reais, com autorização dos pacientes. -->
+    <div class="quotes">
+      <figure class="glass">
+        <blockquote>“Eu tinha receio de ficar com aparência artificial. O Rafael ouviu o que eu queria, explicou cada etapa e indicou só o que fazia sentido para o meu rosto.”</blockquote>
+        <figcaption><b>Camila R.</b>Paciente, preenchimento labial</figcaption>
+      </figure>
+      <figure class="glass">
+        <blockquote>“O planejamento foi muito claro desde a avaliação. Me senti segura o tempo todo, e o acompanhamento depois do procedimento fez toda a diferença.”</blockquote>
+        <figcaption><b>Juliana M.</b>Paciente, contorno mandibular</figcaption>
+      </figure>
+      <figure class="glass">
+        <blockquote>“Cheguei querendo vários procedimentos e saí com uma indicação enxuta e bem justificada. Hoje as pessoas dizem que estou com aparência descansada, não que fiz algo.”</blockquote>
+        <figcaption><b>Fernanda S.</b>Paciente, preenchimento facial</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 9. FAQ -->
+<section class="faq">
+  <div class="wrap" style="display:grid;gap:2.5rem;max-width:880px">
+    <h2>Perguntas frequentes</h2>
+    <div>
+      <details><summary>Como saber qual procedimento é ideal para mim?</summary><p>A indicação acontece após uma avaliação individual, considerando suas características e expectativas.</p></details>
+      <details><summary>Os resultados ficam naturais?</summary><p>O planejamento busca preservar a identidade facial e evitar excessos, embora os resultados variem de pessoa para pessoa.</p></details>
+      <details><summary>Qual é o valor do tratamento?</summary><p>O investimento depende dos procedimentos indicados e do planejamento definido após a avaliação.</p></details>
+      <details><summary>Preciso realizar vários procedimentos?</summary><p>Não. Cada intervenção deve ter uma justificativa individual. Procedimentos desnecessários não fazem parte da proposta de atendimento.</p></details>
+      <details><summary>Como agendar uma avaliação?</summary><p>Basta entrar em contato para consultar os horários disponíveis.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CTA final -->
+<section class="final">
+  <div class="bg"><img src="https://unsplash.com/photos/b2bXKspL5MY/download?force=true&w=1800" width="1800" height="1200" alt="" loading="lazy" onerror="this.remove()"></div>
+  <div class="wrap">
+    <div class="glass">
+      <h2>Valorize seus traços. Preserve sua essência.</h2>
+      <p class="lead">Agende uma avaliação individual com Rafael Monteiro e conheça as possibilidades de tratamento adequadas às suas características e expectativas.</p>
+      <a class="cta" href="#" data-cta>Agendar minha avaliação</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>Fotografias: <a href="https://unsplash.com" rel="noopener">Unsplash</a> (Oliver Johnson, Kamila Maciejewska, Duyet Le, Nappy). Foto, nome e depoimentos ilustrativos, para portfólio..</footer>
+
+<script>
+// Destino dos botões: substitua pela URL real (WhatsApp, agenda online...).
+const CTA_URL = "";
+document.querySelectorAll("[data-cta]").forEach(a => { if (CTA_URL) a.href = CTA_URL; else a.addEventListener("click", e => e.preventDefault()); });
+// Comparador antes/depois.
+document.querySelectorAll(".ba").forEach(f => f.querySelector("input").addEventListener("input", e => f.style.setProperty("--p", e.target.value + "%")));
+</script>
+</body>
+</html>
